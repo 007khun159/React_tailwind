@@ -1,21 +1,13 @@
-
-FROM node:18
-
+FROM node:17-alpine
 
 WORKDIR /app
 
-
-COPY package*.json ./
-
+COPY package.json .
 
 RUN npm install --legacy-peer-deps
-
-RUN npm run build
 
 COPY . .
 
 
-EXPOSE 3000
-
-# Command to run the application
+# Command to run the application when the container starts
 CMD ["npm", "run", "dev"]
